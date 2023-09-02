@@ -12,7 +12,7 @@ const Products = () => {
     fetch("http://localhost:5000/product")
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+    
         setProducts(data)
       }
       )
@@ -39,11 +39,11 @@ const Products = () => {
   };
   return (
     <div className='container-fluid p-4'>
-      <div class="row row-cols-1 row-cols-md-4  g-2">
+      <div className="row row-cols-1 row-cols-md-4  g-2">
 
         {products.map(product => (
           <div className='col' key={product._id}>
-            <div class="w-100 h-100">
+            <div className="w-100 h-100">
 
               <Slider {...sliderSettings}>
 
@@ -84,7 +84,7 @@ const Products = () => {
                 </div>
                 <p class="card-text text-muted">{product?.details}</p>
                 <small>{product?.start}-{product?.end}</small>
-                <p class="card-text"><span className='fw-bold'>${product?.price}</span> night</p>
+                <p className="card-text"><span className='fw-bold'>${product?.price}</span> night</p>
               </div>
 
             </div>

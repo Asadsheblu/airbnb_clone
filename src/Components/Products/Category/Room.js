@@ -11,7 +11,7 @@ const Room = () => {
     fetch("http://localhost:5000/product")
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+       
         setRoom(data)
       }
       )
@@ -38,7 +38,7 @@ const Room = () => {
   };
   return (
     <div className='container-fluid p-4'>
-      <div class="row row-cols-1 row-cols-md-4  g-2">
+      <div className="row row-cols-1 row-cols-md-4  g-2">
 
         {Room.filter((data) => {
 
@@ -48,7 +48,7 @@ const Room = () => {
 
         }).map(product => (
           <div className='col' key={product._id}>
-            <div class="w-100 h-100">
+            <div className="w-100 h-100">
 
               <Slider {...sliderSettings}>
 
@@ -82,23 +82,23 @@ const Room = () => {
 
               </div>
               {/* Modal */}
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Loign/SignUp</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title" id="exampleModalLabel">Loign/SignUp</h5>
+                      <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                    <div className="modal-body">
                       <form>
-                        <div class="form-group">
+                        <div className="form-group">
                           <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                          <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                          <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                           <label for="exampleInputPassword1">Password</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+                          <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
                         </div>
 
                         <button className='mt-3 btn btn-primary' type="submit">Submit</button>
@@ -108,15 +108,15 @@ const Room = () => {
                   </div>
                 </div>
               </div>
-              <div class="card-body p-0">
+              <div className="card-body p-0">
                 <div className='d-flex'>
                   <small className='fw-bold'>{product?.location}</small>
                   <small className='fw-bold ms-auto'> <FaStar className='fs-6 text-warning pb-1' />{product?.rating}</small>
 
                 </div>
-                <p class="card-text text-muted">{product?.details}</p>
+                <p className="card-text text-muted">{product?.details}</p>
                 <small>{product?.start}-{product?.end}</small>
-                <p class="card-text"><span className='fw-bold'>${product?.price}</span> night</p>
+                <p className="card-text"><span className='fw-bold'>${product?.price}</span> night</p>
               </div>
 
             </div>

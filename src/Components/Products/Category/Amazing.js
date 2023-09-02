@@ -11,7 +11,7 @@ const Amazing = () => {
     fetch("http://localhost:5000/product")
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+      
         setAmazing(data)
       }
       )
@@ -38,7 +38,7 @@ const Amazing = () => {
   };
   return (
     <div className='container-fluid p-4'>
-      <div class="row row-cols-1 row-cols-md-4  g-2">
+      <div className="row row-cols-1 row-cols-md-4  g-2">
 
         {Amazing.filter((data) => {
 
@@ -48,7 +48,7 @@ const Amazing = () => {
 
         }).map(product => (
           <div className='col' key={product._id}>
-            <div class="w-100 h-100">
+            <div className="w-100 h-100">
 
               <Slider {...sliderSettings}>
 
@@ -84,15 +84,15 @@ const Amazing = () => {
               </div>
               {/* Modal */}
 
-              <div class="card-body p-0">
+              <div className="card-body p-0">
                 <div className='d-flex'>
                   <small className='fw-bold'>{product?.location}</small>
                   <small className='fw-bold ms-auto'> <FaStar className='fs-6 text-warning pb-1' />{product?.rating}</small>
 
                 </div>
-                <p class="card-text text-muted">{product?.details}</p>
+                <p className="card-text text-muted">{product?.details}</p>
                 <small>{product?.start}-{product?.end}</small>
-                <p class="card-text"><span className='fw-bold'>${product?.price}</span> night</p>
+                <p className="card-text"><span className='fw-bold'>${product?.price}</span> night</p>
               </div>
 
             </div>
