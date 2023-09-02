@@ -4,54 +4,37 @@ import { FaFilter } from 'react-icons/fa';
 import MultiRangeSlider from "multi-range-slider-react";
 import FilterProduct from './FilterProduct';
 const Filter = () => {
-  const [minValue, set_minValue] = useState(0);
-  const [maxValue, set_maxValue] = useState(310);
-  const [filerData, setFilterData] = useState([])
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setMaxValue] = useState(310);
+  const [filterData, setFilterData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
   const handleInput = (e) => {
-    set_minValue(e.minValue);
-    set_maxValue(e.maxValue);
+    setMinValue(e.minValue);
+    setMaxValue(e.maxValue);
   };
+
   useEffect(() => {
-    fetch("http://localhost:5000/product")
-      .then(res => res.json())
-      .then(data => {
+    fetch('http://localhost:5000/product')
+      .then((res) => res.json())
+      .then((data) => {
+        setFilterData(data);
+        // Initially, set filtered data to all data
+        setFilteredData(data);
+      });
+  }, []);
 
-        setFilterData(data)
-      }
-      )
-  }, [])
+  useEffect(() => {
+    // Filter the data based on the price range
+    const filtered = filterData.filter((product) => {
+      const price = parseFloat(product.price);
+      return price >= minValue && price <= maxValue;
+    });
+    setFilteredData(filtered);
+   
+  }, [minValue, maxValue, filterData]);
 
-
-  // const [selectedFilters, setSelectedFilters] = useState([]);
-  // const [filteredItems, setFilteredItems] = useState(items);
-
-  // let filters = ["Bags", "Watches", "Sports", "Sunglasses"];
-
-  // const handleFilterButtonClick = (selectedCategory) => {
-  //   if (selectedFilters.includes(selectedCategory)) {
-  //     let filters = selectedFilters.filter((el) => el !== selectedCategory);
-  //     setSelectedFilters(filters);
-  //   } else {
-  //     setSelectedFilters([...selectedFilters, selectedCategory]);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   filterItems();
-  // }, [selectedFilters]);
-
-  // const filterItems = () => {
-  //   if (selectedFilters.length > 0) {
-  //     let tempItems = selectedFilters.map((selectedCategory) => {
-  //       let temp = items.filter((item) => item.category === selectedCategory);
-  //       return temp;
-  //     });
-  //     setFilteredItems(tempItems.flat());
-  //   } else {
-  //     setFilteredItems([...items]);
-  //   }
-  // };
+  
   return (
     <div>
       <button type="button" className="btn btn-outline success border" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -119,29 +102,8 @@ const Filter = () => {
 
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Clear All</button>
-              <button type="button" className="btn btn-primary">
-                Show&nbsp;
-                {
-                  filerData.filter((data) => {
-                    // eslint-disable-next-line eqeqeq
-                    if (minValue == 0) {
-                      return data
-                    }
-                    else if (data.price ? data.price.toLowerCase().includes(minValue) : "") {
-
-                      return data
-                    }
-
-                  })
-
-                    .map(filters => <FilterProduct key={filters?._id} filters={filters} />)
-
-
-                    .length.toString()
-                }
-
-                &nbsp;Places</button>
-
+              <button type="button" className="btn btn-primary">Show {filteredData?.length} Places</button>
+                
             </div>
           </div>
         </div>
