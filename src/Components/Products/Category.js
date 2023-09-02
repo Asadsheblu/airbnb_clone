@@ -7,7 +7,7 @@ import Amazing from './Category/Amazing';
 import Beach from './Category/Beach';
 import Lake from './Category/Lake';
 import Camping from './Category/Camping';
-import { FaCampground, FaFilter, FaHome, FaRestroom, FaSnowflake, FaStreetView, FaTree, FaUmbrellaBeach } from 'react-icons/fa';
+import {FaHome} from 'react-icons/fa';
 import room from "../../assests/room.jpg"
 import camping from "../../assests/camping.jpg"
 import view from "../../assests/viwes.jpg"
@@ -16,12 +16,15 @@ import lake from "../../assests/lake.jpg"
 import beach from "../../assests/beach.jpg"
 import Filter from './Category/Filter/Filter';
 const Category = () => {
+ 
     return (
         <div className='container-fluid pt-3'>
+
           <div className='d-flex'>
           
         
             <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      
   <li className="nav-item" role="presentation">
     <a className="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="a" role="tab" aria-controls="pills-home" aria-selected="true">
      
@@ -88,6 +91,7 @@ const Category = () => {
     </div>
     </a>
   </li>
+
 </ul>
 <div className='ms-auto'>
 <Filter/>

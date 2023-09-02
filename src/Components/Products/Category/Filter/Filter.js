@@ -1,14 +1,57 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Filter.css"
 import { FaFilter } from 'react-icons/fa';
 import MultiRangeSlider from "multi-range-slider-react";
+import FilterProduct from './FilterProduct';
 const Filter = () => {
-    const [minValue, set_minValue] = useState(10);
+    const [minValue, set_minValue] = useState(0);
 const [maxValue, set_maxValue] = useState(310);
+const [filerData,setFilterData]=useState([])
+
 const handleInput = (e) => {
 	set_minValue(e.minValue);
 	set_maxValue(e.maxValue);
 };
+useEffect(()=>{
+  fetch("http://localhost:5000/product")
+  .then(res=>res.json())
+  .then(data=>{
+    
+      setFilterData(data)
+  }
+     )
+},[])
+
+
+// const [selectedFilters, setSelectedFilters] = useState([]);
+// const [filteredItems, setFilteredItems] = useState(items);
+
+// let filters = ["Bags", "Watches", "Sports", "Sunglasses"];
+
+// const handleFilterButtonClick = (selectedCategory) => {
+//   if (selectedFilters.includes(selectedCategory)) {
+//     let filters = selectedFilters.filter((el) => el !== selectedCategory);
+//     setSelectedFilters(filters);
+//   } else {
+//     setSelectedFilters([...selectedFilters, selectedCategory]);
+//   }
+// };
+
+// useEffect(() => {
+//   filterItems();
+// }, [selectedFilters]);
+
+// const filterItems = () => {
+//   if (selectedFilters.length > 0) {
+//     let tempItems = selectedFilters.map((selectedCategory) => {
+//       let temp = items.filter((item) => item.category === selectedCategory);
+//       return temp;
+//     });
+//     setFilteredItems(tempItems.flat());
+//   } else {
+//     setFilteredItems([...items]);
+//   }
+// };
     return (
         <div>
 <button type="button" class="btn btn-outline success border" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -27,23 +70,23 @@ const handleInput = (e) => {
         <h5>Type of place</h5>
         <p>A home all to yourself. Nightly prices don't include fees or taxes.</p>
       
-      <ul className="nav nav-pills mb-3 rounded border p-3"  role="tablist">
-  <li className="nav-item" role="presentation">
-    <a className="nav-link  border rounded ps-3 pe-3 pt-2 pb-2"  data-bs-toggle="pill" type="a" role="tab" aria-controls="pills-home" aria-selected="true"> 
+      <ul className="nav filter-pills mb-3 rounded border p-3"  role="tablist">
+  <li className="filter-item" role="presentation">
+    <a className="filter-link  border rounded ps-3 pe-3 pt-2 pb-2"  data-bs-toggle="pill" type="a" role="tab" aria-controls="pills-home" aria-selected="true"> 
     
     <h6>Any Type</h6>
      <small>$139 avg.</small>
     </a>
   </li>
-  <li className="nav-item" role="presentation">
-    <a className="nav-link  border rounded ps-4 pe-4 pt-2 pb-2"  data-bs-toggle="pill"  type="a" role="tab" aria-controls="pills-room" aria-selected="false"> 
+  <li className="filter-item" role="presentation">
+    <a className="filter-link  border rounded ps-4 pe-4 pt-2 pb-2"  data-bs-toggle="pill"  type="a" role="tab" aria-controls="pills-room" aria-selected="false"> 
     <h6>Room</h6>
      <small>$33 avg.</small>
     </a>
   </li>
-  <li className="nav-item" role="presentation">
+  <li className="filter-item" role="presentation">
   
-    <a className="nav-link  border rounded ps-3 pe-3 pt-2 pb-2 text-decoration-none" id="pills-tropical-tab" data-bs-toggle="pill"  type="a" role="tab" aria-controls="pills-tropical" aria-selected="false">
+    <a className="filter-link  border rounded ps-3 pe-3 pt-2 pb-2 text-decoration-none" id="pills-tropical-tab" data-bs-toggle="pill"  type="a" role="tab" aria-controls="pills-tropical" aria-selected="false">
     <h6> Entire Home</h6>
     <small>$158 avg.</small>
 
@@ -52,7 +95,7 @@ const handleInput = (e) => {
   </li>
   </ul>
         <MultiRangeSlider
-			min={10}
+			min={0}
 			max={310}
 			step={5}
 			minValue={minValue}
@@ -72,9 +115,33 @@ const handleInput = (e) => {
                         </div>
 				</div>
       </div>
+     
+
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Clear All</button>
+        <button  type="button" class="btn btn-primary">
+      Show&nbsp;
+      {
+        filerData.filter((data)=>{
+          // eslint-disable-next-line eqeqeq
+         if(minValue==0){
+            return data
+         }
+        else if(data.price ? data.price.toLowerCase().includes(minValue):""){
+     
+         return data
+        }
+         
+        })
+      
+       .map(filters=><FilterProduct key={filters?._id} filters={filters}/>) 
+       
+       
+       .length.toString()
+      }
+      
+      &nbsp;Places</button>
+
       </div>
     </div>
   </div>

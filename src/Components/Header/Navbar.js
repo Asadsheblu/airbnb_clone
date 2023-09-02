@@ -15,7 +15,7 @@ const Navbar = () => {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <div className="search-bar mx-auto">
       
-       {/* <Search/> */}
+       <Search/>
         </div>
 
      

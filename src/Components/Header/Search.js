@@ -1,21 +1,62 @@
 import React, { useState } from 'react';
 import { FaBeer, FaSearch } from "react-icons/fa"
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import "./Navbar.css"
+
 const Search = () => {
 
-    const [value, onChange] = useState(new Date());
-
     return (
-        <div className='container bg-white shadow rounded p-3'>
-            <div className='row'>
+        <div className='container'>
+    
+                <div className='search text-center'>
+          <div>
+          <label for="exampleInputEmail1" class="form-label">Where</label>
+    <input type="text" class="form-control rounded-pill" placeholder='Search Destination' id="exampleInputEmail1" aria-describedby="emailHelp"/>
+          </div>
+          <div>
+          <label for="exampleInputEmail1" class="form-label">Check In</label>
+     
+    <input type="date"  class="form-control rounded-pill" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+
+          </div>
+          <div>
+          <label for="exampleInputEmail1" class="form-label">Check Out</label>
+    <input type="date" class="form-control rounded-pill" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+          </div>
+          <div>
+          <label for="exampleInputEmail1" class="form-label">Who</label>
+          <select class="form-select" aria-label="Default select example">
+  <option selected>Open this select menu</option>
+  <option value="1">
+    <div className='d-flex'>
+        <div>Adults</div>
+        <div></div>
+    </div>
+     </option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+          </div>
+         <div>
+             <button className='btn btn-danger rounded-pill ps-3 pe-3 pt-2 pb-2 mt-4'>Search</button>
+                    
+         </div>
+                {/* <input type='date' className='form-control rounded-pill mt-1'placeholder='Location'/>
+                <input type='date' className='form-control rounded-pill mt-1'placeholder='Location'/>
+
+                   
+                   
+                <input type='text' className='form-control rounded-pill mt-1'placeholder='Location'/>
+
+                */}
+                </div>
+
+            {/* <div className='row'>
             <div className='col-md-3'>
-                <small className='text-muted'>City/Street</small>
-                <input type='text' className='form-control rounded-pill'placeholder='Location'/>
+                
             </div>
             <div className='col-md-3'>
-            <small className='text-muted'>Check in</small>
-            <Calendar  onChange={onChange} value={value} />
+            <small className='text-mu4ed'>Check in</small>
+            <input type='date' className='from-control'></input>
             </div>
           
             <div className='col-md-3'>
@@ -27,7 +68,7 @@ const Search = () => {
             <br/>
                 <button className='btn btn-success'><FaSearch/></button>
             </div>
-            </div>
+            </div> */}
         </div>
     );
 };

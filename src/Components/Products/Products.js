@@ -68,7 +68,7 @@ const Products = () => {
                               </div>
                           
                               <p className='ms-auto heart'>
-                              <a   data-bs-toggle="modal" data-bs-target="#exampleModal"><FaHeart className='fs-4'/></a>
+                              <a  data-bs-toggle="modal" data-bs-target="#exampleModal"><FaHeart className='fs-4'/></a>
                               
                              </p>
                             

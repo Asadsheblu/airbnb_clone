@@ -1,4 +1,4 @@
-.nav-link {
+.filter-link {
     display: block;
     padding: 0.5rem 1rem;
     color: black;
@@ -7,7 +7,7 @@
 
 
 }
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+.filter-pills .filter-link.active, .filter-pills .show>.filter-link {
     color: #fff;
     background-color: black;
 }
