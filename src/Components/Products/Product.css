@@ -1,0 +1,16 @@
+
+.slick-prev {
+    left: 0px!important;
+}
+.heart{
+    color: white;
+    margin-top: -250px!important;
+    z-index: 10;
+    font-size: large;
+    padding-right: 10px;
+    cursor: pointer;
+  }
+.heart:hover{
+  color: red!important;
+  }
+ 

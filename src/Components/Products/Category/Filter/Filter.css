@@ -1,0 +1,13 @@
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+
+
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: black;
+}
