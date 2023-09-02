@@ -7,7 +7,9 @@
 
 
 }
-.filter-pills .filter-link.active, .filter-pills .show>.filter-link {
+
+.filter-pills .filter-link.active,
+.filter-pills .show>.filter-link {
     color: #fff;
     background-color: black;
 }

@@ -1,14 +1,16 @@
 .nav-link {
     display: block;
     padding: 0.5rem 1rem;
-    color:gray!important;
+    color: gray !important;
     text-decoration: none;
     cursor: pointer;
 
 
 }
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
     background-color: unset !important;
     color: unset !important;
-    border-bottom: 1px solid black!important;
+    border-bottom: 1px solid black !important;
 }
