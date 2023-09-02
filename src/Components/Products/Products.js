@@ -6,17 +6,27 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaHeart, FaStar } from 'react-icons/fa';
 import Modal from './Modal/Modal';
-const Products = () => {
+const Products = ({priceRange}) => {
   const [products, setProducts] = useState([])
+  const [filterProduct,setFilterProduct]=useState(products)
   useEffect(() => {
     fetch("http://localhost:5000/product")
       .then(res => res.json())
       .then(data => {
-    
+        setFilterProduct(data)
         setProducts(data)
       }
       )
   }, [])
+  useEffect(() => {
+    // Filter the data based on the price range
+    const filtered = products.filter((product) => {
+      const price = parseFloat(product.price);
+      return price >=priceRange?.minValue && price <=priceRange?.maxValue;
+    });
+    setFilterProduct(filtered);
+    console.log(filtered);
+  }, [priceRange]);
   const sliderSettings = {
     dots: true,
     infinite: false,
@@ -39,9 +49,10 @@ const Products = () => {
   };
   return (
     <div className='container-fluid p-4'>
+      
       <div className="row row-cols-1 row-cols-md-4  g-2">
 
-        {products.map(product => (
+        {filterProduct.map(product => (
           <div className='col' key={product._id}>
             <div className="w-100 h-100">
 

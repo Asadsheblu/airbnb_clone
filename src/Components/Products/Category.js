@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Category.css'
 import Products from './Products';
 import Room from './Category/Room';
@@ -16,7 +16,10 @@ import lake from "../../assests/lake.jpg"
 import beach from "../../assests/beach.jpg"
 import Filter from './Category/Filter/Filter';
 const Category = () => {
-
+const [priceRange,setPriceRange]=useState({
+  minValue:0,
+  maxValue:0
+})
   return (
     <div className='container-fluid pt-3'>
 
@@ -94,13 +97,13 @@ const Category = () => {
 
         </ul>
         <div className='ms-auto'>
-          <Filter />
+          <Filter priceRange={priceRange} setPriceRange={setPriceRange}/>
         </div>
 
       </div>
       <div className="tab-content" id="pills-tabContent">
         <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-          <Products />
+          <Products priceRange={priceRange}/>
         </div>
         <div className="tab-pane fade" id="pills-room" role="tabpanel" aria-labelledby="pills-room-tab">
           <Room />
@@ -121,6 +124,7 @@ const Category = () => {
           <Camping />
         </div>
       </div>
+      
     </div>
 
   );

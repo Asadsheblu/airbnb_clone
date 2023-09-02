@@ -1,7 +1,7 @@
 import React from 'react';
 
 const FilterProduct = (props) => {
-    const { price } = props.filters
+    const { price } = props.product
     console.log(price);
     return (
         <div>

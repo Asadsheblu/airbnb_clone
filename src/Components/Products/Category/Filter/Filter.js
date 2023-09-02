@@ -3,7 +3,10 @@ import "./Filter.css"
 import { FaFilter } from 'react-icons/fa';
 import MultiRangeSlider from "multi-range-slider-react";
 import FilterProduct from './FilterProduct';
-const Filter = () => {
+import Products from '../../Products';
+import { useNavigate } from 'react-router-dom';
+const Filter = ({priceRange,setPriceRange}) => {
+
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(310);
   const [filterData, setFilterData] = useState([]);
@@ -21,6 +24,7 @@ const Filter = () => {
         setFilterData(data);
         // Initially, set filtered data to all data
         setFilteredData(data);
+       
       });
   }, []);
 
@@ -31,9 +35,12 @@ const Filter = () => {
       return price >= minValue && price <= maxValue;
     });
     setFilteredData(filtered);
-   
-  }, [minValue, maxValue, filterData]);
-
+    setPriceRange({minValue,maxValue})
+  }, [minValue, maxValue, filterData,setPriceRange]);
+  const navigate=useNavigate()
+    const handelButton=()=>{
+        navigate('/')
+    }
   
   return (
     <div>
@@ -101,10 +108,12 @@ const Filter = () => {
 
 
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Clear All</button>
-              <button type="button" className="btn btn-primary">Show {filteredData?.length} Places</button>
+              
+              <button type="button" data-bs-dismiss="modal" onClick={handelButton} className="btn btn-primary">Show {filteredData?.length} Places</button>
                 
             </div>
+            
+
           </div>
         </div>
       </div>
