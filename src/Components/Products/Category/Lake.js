@@ -11,7 +11,7 @@ const Lake = () => {
     fetch("https://renthouse-backend.onrender.com/product")
       .then(res => res.json())
       .then(data => {
-       
+
         setLake(data)
       }
       )
@@ -56,7 +56,7 @@ const Lake = () => {
                   <>
 
                     <div key={index} className='w-100 h-100'>
-                     
+
                       <img height={250} src={image} alt='image' className='w-100 rounded shadow' />
 
                     </div>
@@ -74,7 +74,7 @@ const Lake = () => {
                 </div>
 
                 <p className='ms-auto heart'>
-                  <a><FaHeart className='fs-4' /></a>
+                  <FaHeart className='fs-4' />
 
                 </p>
 
@@ -82,7 +82,7 @@ const Lake = () => {
 
 
               </div>
-            
+
               <div className="card-body p-0">
                 <div className='d-flex'>
                   <small className='fw-bold'>{product?.location}</small>

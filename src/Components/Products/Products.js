@@ -5,9 +5,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaHeart, FaStar } from 'react-icons/fa';
-const Products = ({priceRange}) => {
+const Products = ({ priceRange }) => {
   const [products, setProducts] = useState([])
-  const [filterProduct,setFilterProduct]=useState(products)
+  const [filterProduct, setFilterProduct] = useState(products)
   useEffect(() => {
     fetch("https://renthouse-backend.onrender.com/product")
       .then(res => res.json())
@@ -21,7 +21,7 @@ const Products = ({priceRange}) => {
     // Filter the data based on the price range
     const filtered = products.filter((product) => {
       const price = parseFloat(product.price);
-      return price >=priceRange?.minValue && price <=priceRange?.maxValue;
+      return price >= priceRange?.minValue && price <= priceRange?.maxValue;
     });
     setFilterProduct(filtered);
     console.log(filtered);
@@ -48,7 +48,7 @@ const Products = ({priceRange}) => {
   };
   return (
     <div className='container-fluid p-4'>
-      
+
       <div className="row row-cols-1 row-cols-md-4  g-2">
 
         {filterProduct.map(product => (
@@ -78,12 +78,12 @@ const Products = ({priceRange}) => {
                 </div>
 
                 <p className='ms-auto heart'>
-                  <a ><FaHeart className='fs-4' /></a>
+                  <FaHeart className='fs-4' />
 
                 </p>
 
               </div>
-             
+
               <div class="card-body p-0">
                 <div className='d-flex'>
                   <small className='fw-bold'>{product?.location}</small>

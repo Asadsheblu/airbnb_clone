@@ -11,7 +11,7 @@ const Camping = () => {
     fetch("https://renthouse-backend.onrender.com/product")
       .then(res => res.json())
       .then(data => {
-      
+
         setRoom(data)
       }
       )
@@ -73,7 +73,7 @@ const Camping = () => {
                 </div>
 
                 <p className='ms-auto heart'>
-                  <a> <FaHeart className='fs-4' /></a>
+                  <FaHeart className='fs-4' />
 
                 </p>
 
@@ -81,7 +81,7 @@ const Camping = () => {
 
 
               </div>
-             
+
               <div className="card-body p-0">
                 <div className='d-flex'>
                   <small className='fw-bold'>{product?.location}</small>

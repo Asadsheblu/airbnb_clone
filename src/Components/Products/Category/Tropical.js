@@ -73,7 +73,6 @@ const Tropical = () => {
                 </div>
 
                 <p className='ms-auto heart'>
-                  <a><FaHeart className='fs-4' /></a>
 
                 </p>
 

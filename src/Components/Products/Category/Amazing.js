@@ -74,7 +74,7 @@ const Amazing = () => {
                 </div>
 
                 <p className='ms-auto heart'>
-                  <a><FaHeart className='fs-4' /></a>
+                  <FaHeart className='fs-4' />
 
                 </p>
 
