@@ -18,7 +18,7 @@ const Filter = ({priceRange,setPriceRange}) => {
   };
 
   useEffect(() => {
-    fetch('http://localhost:5000/product')
+    fetch('https://renthouse-backend.onrender.com/product')
       .then((res) => res.json())
       .then((data) => {
         setFilterData(data);

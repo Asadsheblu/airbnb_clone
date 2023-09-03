@@ -5,11 +5,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaHeart, FaStar } from 'react-icons/fa';
-import Modal from '../Modal/Modal';
 const Lake = () => {
   const [Lake, setLake] = useState([])
   useEffect(() => {
-    fetch("http://localhost:5000/product")
+    fetch("https://renthouse-backend.onrender.com/product")
       .then(res => res.json())
       .then(data => {
        
@@ -75,7 +74,7 @@ const Lake = () => {
                 </div>
 
                 <p className='ms-auto heart'>
-                  <a data-bs-toggle="modal" data-bs-target="#exampleModal"><FaHeart className='fs-4' /></a>
+                  <a><FaHeart className='fs-4' /></a>
 
                 </p>
 
@@ -83,9 +82,7 @@ const Lake = () => {
 
 
               </div>
-              {/* Modal start*/}
-              <Modal />
-              {/* Modal end*/}
+            
               <div className="card-body p-0">
                 <div className='d-flex'>
                   <small className='fw-bold'>{product?.location}</small>

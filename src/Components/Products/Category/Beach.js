@@ -8,10 +8,10 @@ import { FaHeart, FaStar } from 'react-icons/fa';
 const Beach = () => {
   const [Beach, setBeach] = useState([])
   useEffect(() => {
-    fetch("http://localhost:5000/product")
+    fetch("https://renthouse-backend.onrender.com/product")
       .then(res => res.json())
       .then(data => {
-        
+
         setBeach(data)
       }
       )
@@ -73,7 +73,7 @@ const Beach = () => {
                 </div>
 
                 <p className='ms-auto heart'>
-                  <a data-bs-toggle="modal" data-bs-target="#exampleModal"><FaHeart className='fs-4' /></a>
+                  <a><FaHeart className='fs-4' /></a>
 
                 </p>
 
@@ -81,7 +81,7 @@ const Beach = () => {
 
 
               </div>
-              {/* Modal */}
+
               <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                   <div className="modal-content">

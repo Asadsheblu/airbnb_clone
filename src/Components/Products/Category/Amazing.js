@@ -8,10 +8,10 @@ import { FaHeart, FaStar } from 'react-icons/fa';
 const Amazing = () => {
   const [Amazing, setAmazing] = useState([])
   useEffect(() => {
-    fetch("http://localhost:5000/product")
+    fetch("https://renthouse-backend.onrender.com/product")
       .then(res => res.json())
       .then(data => {
-      
+
         setAmazing(data)
       }
       )
@@ -74,7 +74,7 @@ const Amazing = () => {
                 </div>
 
                 <p className='ms-auto heart'>
-                  <a data-bs-toggle="modal" data-bs-target="#exampleModal"><FaHeart className='fs-4' /></a>
+                  <a><FaHeart className='fs-4' /></a>
 
                 </p>
 
@@ -82,7 +82,7 @@ const Amazing = () => {
 
 
               </div>
-              {/* Modal */}
+
 
               <div className="card-body p-0">
                 <div className='d-flex'>

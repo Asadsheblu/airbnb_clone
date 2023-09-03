@@ -8,10 +8,10 @@ import { FaHeart, FaStar } from 'react-icons/fa';
 const Tropical = () => {
   const [Tropical, setRoom] = useState([])
   useEffect(() => {
-    fetch("http://localhost:5000/product")
+    fetch("https://renthouse-backend.onrender.com/product")
       .then(res => res.json())
       .then(data => {
-       
+
         setRoom(data)
       }
       )
@@ -73,7 +73,7 @@ const Tropical = () => {
                 </div>
 
                 <p className='ms-auto heart'>
-                  <a data-bs-toggle="modal" data-bs-target="#exampleModal"><FaHeart className='fs-4' /></a>
+                  <a><FaHeart className='fs-4' /></a>
 
                 </p>
 
@@ -81,33 +81,8 @@ const Tropical = () => {
 
 
               </div>
-              {/* Modal */}
-              <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h5 className="modal-title" id="exampleModalLabel">Loign/SignUp</h5>
-                      <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div className="modal-body">
-                      <form>
-                        <div className="form-group">
-                          <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                          <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
-                        <div className="form-group">
-                          <label for="exampleInputPassword1">Password</label>
-                          <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-                        </div>
 
-                        <button className='mt-3 btn btn-primary' type="submit">Submit</button>
-                      </form>
-                    </div>
 
-                  </div>
-                </div>
-              </div>
               <div className="card-body p-0">
                 <div className='d-flex'>
                   <small className='fw-bold'>{product?.location}</small>

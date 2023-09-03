@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Navbar.css";
 
 const Search = () => {
@@ -6,7 +6,28 @@ const Search = () => {
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const [numberOfAdults, setNumberOfAdults] = useState(1); // Default to 1 adult
+  const [filteredData, setFilteredData] = useState([]);
+  const [filterData, setFilterData] = useState([]);
+  useEffect(() => {
+    fetch('https://renthouse-backend.onrender.com/product')
+      .then((res) => res.json())
+      .then((data) => {
+        setFilterData(data);
+        // Initially, set filtered data to all data
+        setFilteredData(data);
+       
+      });
+  }, []);
 
+  useEffect(() => {
+    // Filter the data based on the price range
+    const filtered = filterData.filter((product) => {
+      const location = (product.location);
+      return location
+    });
+    setFilteredData(filtered);
+   console.log(filtered);
+  }, [where, filterData]);
   // Handle form submission
   const handleSearch = () => {
     console.log(checkIn);
@@ -16,7 +37,7 @@ const Search = () => {
 
   return (
     <div className='container'>
-          <form onSubmit={handleSearch}>
+          <form >
       <div className='search text-center'>
       
 
@@ -56,7 +77,7 @@ const Search = () => {
           <label htmlFor="numberOfAdults" className="form-label">Who</label>
           <select
             id="numberOfAdults"
-            className="form-select"
+            className="form-select rounded-pill"
             value={numberOfAdults}
             onChange={(e) => setNumberOfAdults(e.target.value)}
           >
